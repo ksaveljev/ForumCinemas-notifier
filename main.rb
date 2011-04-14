@@ -1,5 +1,5 @@
 require 'Qt'
-require './forumecinemas_widget.rb'
+require './forumcinemas_notifier.rb'
 
 app = Qt::Application.new(ARGV)
 
