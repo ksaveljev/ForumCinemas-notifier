@@ -4,6 +4,7 @@ class ForumCinemasNotifier < Qt::Widget
 
     createActions
     createTrayIcon
+    setIcon
 
     @trayIcon.show
 
@@ -25,5 +26,11 @@ class ForumCinemasNotifier < Qt::Widget
 
     @trayIcon = Qt::SystemTrayIcon.new(self)
     @trayIcon.contextMenu = @trayIconMenu
+  end
+
+  def setIcon
+    icon = Qt::Icon.new(":/images/forumcinemas.ico")
+    @trayIcon.icon = icon
+    setWindowIcon(icon)
   end
 end

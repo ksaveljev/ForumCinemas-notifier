@@ -1,4 +1,5 @@
 require 'Qt'
+require './qrc_forumcinemas.rb'
 require './forumcinemas_notifier.rb'
 
 app = Qt::Application.new(ARGV)
@@ -9,6 +10,6 @@ unless Qt::SystemTrayIcon.isSystemTrayAvailable
 end
 
 notifier = ForumCinemasNotifier.new
-notifier.show
+#notifier.show
 
 app.exec
