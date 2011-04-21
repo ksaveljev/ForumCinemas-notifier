@@ -7,7 +7,7 @@ class ForumCinemas
   end
 
   def valid?
-    document.nil?
+    not document.nil?
   end
 
   def reload
@@ -15,9 +15,17 @@ class ForumCinemas
     document
   end
 
+  def poster
+    document.search("div[@class='frame'] img").first['src']
+  end
+
+  def title
+    document.xpath("//span[@class='movieName']").inner_html.strip
+  end
+
   private
 
   def document
-    @document ||= Nokogori::HTML(open("http://www.forumcinemas.ee/Event/#{@forumcinemas_id}")) rescue nil
+    @document ||= Nokogiri::HTML(open("http://www.forumcinemas.ee/Event/#{@forumcinemas_id}")) rescue nil
   end
 end
