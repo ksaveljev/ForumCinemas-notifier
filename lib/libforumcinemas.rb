@@ -23,6 +23,12 @@ class ForumCinemas
     document.xpath("//span[@class='movieName']").inner_html.strip
   end
 
+  # date: string of format "%02d.%02d.%4d"
+  def tickets_available?(date)
+    tickets = document.search("option[@value='#{date}']") rescue []
+    not tickets.empty?
+  end
+
   private
 
   def document
